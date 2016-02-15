@@ -1,0 +1,55 @@
+<script>
+    function add() {
+        var postData = $("#ff").serialize();
+        $.post("/admin/business/saveorupdate", postData, function (returnData) {
+            if (returnData.status == 200) {
+//                        $.messager.alert("保存成功", "保存成功");
+                openTab('商家列表', "/admin/business/tolist")
+            } else {
+                $.messager.alert(returnData.message, returnData.message)
+            }
+        })
+    }
+    /**
+     * 验证用户名格式
+     * @param username
+     * @returns {Array|{index: number, input: string}}
+     */
+    function verifyUserName(username) {
+        var reg = /^[a-zA-Z]\w{6,18}$/;
+        var r = username.match(reg);
+        return r;
+    }
+</script>
+<div closable="true" class="easyui-layout" fit="true" border="false">
+    <div data-options="region:'center',split:true">
+        <form id="ff" method="post">
+            <input type="hidden" id="id" name="id">
+            <input type="hidden" id="sysUserId" name="sysUserId" value="${business.sysUserId}">
+            <table cellpadding="5">
+                <tr>
+                    <td>商家姓名</td>
+                    <td><input class="easyui-textbox" style="width: 300px" type="text" name="name"
+                               data-options="required:true">
+                    </td>
+                </tr>
+                <tr>
+                    <td>商家简介</td>
+                    <td><input class="easyui-textbox" style="width: 300px" type="text" name="descrp" data-options="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>搜索关键字</td>
+                    <td><input class="easyui-textbox" style="width: 300px" type="text" name="searchKey"
+                               data-options="required:true">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+    <div data-options="region:'south'" style="height:70px;">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'" id="add"
+           onclick="add()">保存</a>
+    </div>
+</div>
