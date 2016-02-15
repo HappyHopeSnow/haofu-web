@@ -15,6 +15,17 @@ public class HelloController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/")
+	public String home(ModelMap model) {
+		model.addAttribute("message", "Hello world!aa");
+		return "index";
+	}
+
+	/**
+	 * 首页
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "index")
 	public String index(ModelMap model) {
 		model.addAttribute("message", "Hello world!aa");
 		return "index";
@@ -25,10 +36,10 @@ public class HelloController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "detail")
+	@RequestMapping(method = RequestMethod.GET, value = "details")
 	public String detail(ModelMap model) {
 		model.addAttribute("data", "detail");
-		return "detail";
+		return "details";
 	}
 
 	/**
@@ -52,27 +63,48 @@ public class HelloController {
 		return "result";
 	}
 
-	/*************************************************下面这个是测试的链接************************************************************************/
-	/**
-	 * 测试toxiazai首页页面
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.GET, value = "to")
-	public String toxiazai(ModelMap model) {
+	/*************************************************下面这个是其他的链接************************************************************************/
+
+	@RequestMapping(method = RequestMethod.GET, value = "accessories")
+	public String accessories(ModelMap model) {
 		model.addAttribute("data", "detail");
-		return "to_index";
+		return "accessories";
 	}
 
-	/**
-	 * 测试toxiazai网赚页面
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.GET, value = "money")
-	public String money(ModelMap model) {
+	@RequestMapping(method = RequestMethod.GET, value = "contact")
+	public String contact(ModelMap model) {
 		model.addAttribute("data", "detail");
-		return "index";
+		return "contact";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "handbags")
+	public String handbags(ModelMap model) {
+		model.addAttribute("data", "detail");
+		return "handbags";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "sale")
+	public String sale(ModelMap model) {
+		model.addAttribute("data", "detail");
+		return "sale";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "service")
+	public String service(ModelMap model) {
+		model.addAttribute("data", "detail");
+		return "service";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "shoes")
+	public String shoes(ModelMap model) {
+		model.addAttribute("data", "detail");
+		return "shoes";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "wallets")
+	public String wallets(ModelMap model) {
+		model.addAttribute("data", "detail");
+		return "wallets";
 	}
 
 
